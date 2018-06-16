@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:layout_width="120dp"
+        android:src="@color/colorPrimary"
+        android:layout_height="160dp"
+        android:id="@+id/image"
+        android:contentDescription="image"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:text="Name"
+            android:textSize="24sp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/name"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" android:textSize="24sp"
+            android:text="address"
+            android:id="@+id/address"
+            />
+        <TextView
+            android:layout_width="match_parent"
+
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textSize="24sp"
+            android:text="address"
+            android:id="@+id/number"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:text="View"
+
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/viewbtn"
+            />
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
