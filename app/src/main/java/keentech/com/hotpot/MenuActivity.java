@@ -3,6 +3,7 @@ package keentech.com.hotpot;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
@@ -43,9 +44,11 @@ public class MenuActivity extends AppCompatActivity {
         mAdapter=new MenuListAdapter(list,MenuActivity.this);
         rvList.setAdapter(mAdapter);
         rvList.setHasFixedSize(true);
+        mLayoutManager = new LinearLayoutManager(this);
+        rvList.setLayoutManager(mLayoutManager);
 
 
-        /*mRef.child(id).child("items").addListenerForSingleValueEvent(new ValueEventListener() {
+        mRef.child("menu").child(id).child("items").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 itemsString= (String) dataSnapshot.getValue();
@@ -58,13 +61,12 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
-*/
+
     }
 
     private void updateList() {
-       ArrayList listArr = new ArrayList<String>(Arrays.asList(itemsString.split(" , ")));
-        Toast.makeText(MenuActivity.this, itemsString, Toast.LENGTH_SHORT).show();
-
+       ArrayList listArr = new ArrayList<String>(Arrays.asList(itemsString.split(",")));
+      
         for(int i=0;i<listArr.size();i++){
             mRef.child("products").child(String.valueOf(listArr.get(i))).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -73,7 +75,14 @@ public class MenuActivity extends AppCompatActivity {
                     Product res= dataSnapshot.getValue(Product.class);
                     res.setId(dataSnapshot.getKey());
                     list.add(res);
-                    mAdapter.notifyDataSetChanged();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            mAdapter.notifyDataSetChanged();
+
+                        }
+                    });
 
                 }
 
@@ -83,6 +92,7 @@ public class MenuActivity extends AppCompatActivity {
                 }
             });
         }
+
 
     }
 }

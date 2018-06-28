@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.MenuViewHolder> {
@@ -35,8 +37,22 @@ class MenuListAdapter extends RecyclerView.Adapter<MenuListAdapter.MenuViewHolde
     @Override
     public void onBindViewHolder(MenuViewHolder holder, int position) {
 
+        holder.name.setText(list.get(position).getName());
+        holder.serving.setText(String.valueOf(list.get(position).getServing()));
+        holder.price.setText(String.valueOf(list.get(position).getPrice()));
 
+        if(list.get(position).getVeg()==1){
+            holder.veg.setText("Veg");
         }
+        else {
+            holder.veg.setText("Non Veg");
+        }
+
+        Picasso.get().load(list.get(position).getLink()).into(holder.image);
+
+
+
+    }
 
 
     @Override
