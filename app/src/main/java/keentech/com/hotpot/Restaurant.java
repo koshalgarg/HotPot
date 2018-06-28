@@ -6,14 +6,14 @@ class Restaurant {
     String name;
     String address;
     String number;
-    String imgurl;
+    String link;
 
-    public Restaurant(String id, String name, String address, String number, String imgurl) {
+    public Restaurant(String id, String name, String address, String number, String link) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.number = number;
-        this.imgurl = imgurl;
+        this.link = link;
     }
 
     public Restaurant() {
@@ -51,11 +51,11 @@ class Restaurant {
         this.number = number;
     }
 
-    public String getImgurl() {
-        return imgurl;
+    public String getLink() {
+        return link;
     }
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl;
+    public void setLink(String link) {
+        this.link = link;
     }
 }
