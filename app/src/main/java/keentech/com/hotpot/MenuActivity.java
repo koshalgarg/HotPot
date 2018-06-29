@@ -66,7 +66,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private void updateList() {
        ArrayList listArr = new ArrayList<String>(Arrays.asList(itemsString.split(",")));
-      
+
         for(int i=0;i<listArr.size();i++){
             mRef.child("products").child(String.valueOf(listArr.get(i))).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
